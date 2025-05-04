@@ -1,0 +1,22 @@
+Hay que hacer varios cambios antes de poner este bot a producción
+
+Modificar el codigo para prevenir errores (bucles infinitos) en caso de que falle la API:
+
+####################################
+
+import time
+max_attempts = 10  
+attempts = 0
+while run.status != "completed" and attempts < max_attempts:
+    time.sleep(0.5)
+    run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+    attempts += 1
+if attempts == max_attempts:
+    logging.error("El asistente no respondió a tiempo.")
+
+#####################################
+
+
+
+
+
